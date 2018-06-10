@@ -349,6 +349,7 @@ void UKF::UpdateLidar(MeasurementPackage meas_package) {
   P_ = P_ - K * S * K.transpose();
 
   double NIS_laser = (meas_package.raw_measurements_ - z_pred).transpose() * S.inverse() * (meas_package.raw_measurements_ - z_pred);
+  std::cout << "NIS Laser : " << NIS_laser << std::endl;
 }
 
 /**
@@ -475,5 +476,6 @@ void UKF::UpdateRadar(MeasurementPackage meas_package) {
 
   // Update radar
   double NIS_radar = (meas_package.raw_measurements_ - z_pred).transpose() * S.inverse() * (meas_package.raw_measurements_ - z_pred);
+  std::cout << "NIS Radar : " << NIS_radar << std::endl;
 }
 
